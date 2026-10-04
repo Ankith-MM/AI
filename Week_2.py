@@ -1,17 +1,17 @@
 def print_board(state):
-    """Prints a 3x3 representation of the puzzle state."""
+   
     for i in range(0, 9, 3):
         print(" ".join(str(x) if x != 0 else "_" for x in state[i:i+3]))
     print()
 
 
 def get_neighbors(state):
-    """Generates valid successor states and their associated move direction."""
+    
     zero_idx = state.index(0)
     row, col = zero_idx // 3, zero_idx % 3
     neighbors = []
 
-    # Possible moves of the blank tile (0)
+    
     moves = [(-1, 0, 'Up'), (1, 0, 'Down'), (0, -1, 'Left'), (0, 1, 'Right')]
 
     for dr, dc, move_name in moves:
@@ -26,7 +26,7 @@ def get_neighbors(state):
 
 
 def is_solvable(initial_state, goal_state):
-    """Checks solvability by matching the parity of inversions."""
+    
     def count_inversions(state):
         arr = [x for x in state if x != 0]
         inversions = 0
@@ -40,9 +40,7 @@ def is_solvable(initial_state, goal_state):
 
 
 def dfs(initial_state, goal_state, max_depth=20):
-    """
-    Depth-First Search (DFS) algorithm with current path tracking to avoid cycles.
-    """
+  
     stack = [(initial_state, [initial_state], [])]
 
     while stack:
@@ -60,10 +58,8 @@ def dfs(initial_state, goal_state, max_depth=20):
 
 
 def ids(initial_state, goal_state, max_limit=30):
-    """
-    Iterative Deepening Search (IDS) algorithm.
-    Iteratively increases the depth limit until a solution is found.
-    """
+   vely increases the depth limit until a solution is found.
+    
     for limit in range(max_limit + 1):
         stack = [(initial_state, [initial_state], [], 0)]
 
